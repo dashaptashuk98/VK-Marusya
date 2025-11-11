@@ -1,59 +1,6 @@
 <template>
   <div class="home">
-    <header class="header">
-      <div class="container">
-        <div class="header__wrapper">
-          <router-link to="/" class="header__left">
-            <img
-              v-if="!isMobile"
-              class="header__left-img"
-              src="/src/assets/images/маруся white.png"
-              alt="Маруся"
-            />
-            <img
-              v-if="isMobile"
-              class="header__left-img"
-              src="/src/assets/images/маруся whiteMobile.png"
-              alt="Маруся"
-            />
-          </router-link>
-          <div class="header__center">
-            <router-link to="/" class="header__center-main" exact-active-class="active">
-              <span class="text">Главное</span>
-            </router-link>
-            <router-link to="/genres" class="header__center-main" exact-active-class="active">
-              <span class="text">Журнал</span>
-              <img class="icon" src="/src/assets/images/mobile2.svg" alt="Журнал" />
-            </router-link>
-            <div class="form__search">
-              <img
-                v-if="!isMobile"
-                class="header__center-img"
-                src="/src/assets/images/Vector.svg"
-                alt="Поиск"
-              />
-              <img
-                v-if="isMobile"
-                class="header__center-img"
-                src="/src/assets/images/mobile3.svg"
-                alt="Поиск"
-              />
-              <input
-                type="text"
-                class="header__center-search"
-                placeholder="Поиск"
-                v-show="!isMobile"
-              />
-            </div>
-          </div>
-          <button class="header__right">
-            <span class="text">Войти</span>
-            <img class="icon" src="/src/assets/images/mobile1.svg" alt="Войти" />
-          </button>
-        </div>
-      </div>
-    </header>
-
+    <header-comp />
     <main class="main">
       <div class="container">
         <!-- <ModalReg /> -->
@@ -74,26 +21,7 @@
         </div>
       </div>
     </main>
-
-    <!-- Футер (остается без изменений) -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__wrapper">
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/vk.svg" alt="" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/ok.svg" alt="" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/telegram.svg" alt="" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/youtube.svg" alt="" class="footer__img" />
-          </a>
-        </div>
-      </div>
-    </footer>
+    <footer-comp />
   </div>
 </template>
 
@@ -106,6 +34,8 @@ import FilmCard from '@/components/FilmCard.vue'
 import { apiService, type Movie } from '@/services/api'
 import { useRoute, useRouter } from 'vue-router'
 import ModalReg from '@/components/modalReg.vue'
+import headerComp from '@/components/headerComp.vue'
+import footerComp from '@/components/footerComp.vue'
 const route = useRoute()
 const isMobile = ref(false)
 

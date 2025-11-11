@@ -1,28 +1,6 @@
 <template>
   <div class="movie-page">
-    <header class="header">
-      <div class="container">
-        <div class="header__wrapper">
-          <router-link to="/" class="header__left">
-            <img class="header__left-img" src="/src/assets/images/маруся white.png" alt="Маруся" />
-          </router-link>
-          <div class="header__center">
-            <router-link to="/" class="header__center-main" exact-active-class="active">
-              Главное
-            </router-link>
-            <router-link to="/genres" class="header__center-main" exact-active-class="active">
-              Журнал
-            </router-link>
-            <div class="form__search">
-              <img class="header__center-img" src="/src/assets/images/Vector.svg" alt="Поиск" />
-              <input type="text" class="header__center-search" placeholder="Поиск" />
-            </div>
-          </div>
-          <button class="header__right">Войти</button>
-        </div>
-      </div>
-    </header>
-
+    <header-comp />
     <main class="main">
       <div class="container">
         <FilmCardSpecial v-if="movie" :movie="movie" />
@@ -43,6 +21,7 @@
         <div v-else class="empty">Фильм не найден</div>
       </div>
     </main>
+    <footer-comp />
   </div>
 </template>
 
@@ -52,6 +31,8 @@ import { useRoute } from 'vue-router'
 import { apiService, type Movie } from '../services/api'
 import FilmCardSpecial from '@/components/FilmCardSpecial.vue'
 import FilmDescrip from '@/components/FilmDescrip.vue'
+import headerComp from '@/components/headerComp.vue'
+import footerComp from '@/components/footerComp.vue'
 const isActive = ref(false)
 const route = useRoute()
 const movie = ref<Movie | null>(null)

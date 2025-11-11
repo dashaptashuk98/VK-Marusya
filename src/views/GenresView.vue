@@ -45,30 +45,14 @@
       </div>
     </div>
   </main>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__wrapper">
-        <a href="#" class="footer__nav">
-          <img src="/src/assets/images/vk.svg" alt="ВКонтакте" class="footer__img" />
-        </a>
-        <a href="#" class="footer__nav">
-          <img src="/src/assets/images/ok.svg" alt="Одноклассники" class="footer__img" />
-        </a>
-        <a href="#" class="footer__nav">
-          <img src="/src/assets/images/telegram.svg" alt="Telegram" class="footer__img" />
-        </a>
-        <a href="#" class="footer__nav">
-          <img src="/src/assets/images/youtube.svg" alt="YouTube" class="footer__img" />
-        </a>
-      </div>
-    </div>
-  </footer>
+  <footer-comp />
 </template>
 
 <script setup lang="ts">
 import GanreCard from '@/components/GanreCard.vue'
 import { apiService } from '@/services/api'
 import { ref, onMounted } from 'vue'
+import footerComp from '@/components/footerComp.vue'
 
 const genres = ref<string[]>([])
 const loading = ref(false)

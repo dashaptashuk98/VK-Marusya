@@ -8,7 +8,7 @@
           </router-link>
           <div class="header__center">
             <router-link to="/" class="header__center-main" exact-active-class="active">
-              Главное
+              Главная
             </router-link>
             <router-link
               to="/genres"
@@ -46,24 +46,7 @@
       </div>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer__wrapper">
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/vk.svg" alt="ВКонтакте" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/ok.svg" alt="Одноклассники" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/telegram.svg" alt="Telegram" class="footer__img" />
-          </a>
-          <a href="#" class="footer__nav">
-            <img src="/src/assets/images/youtube.svg" alt="YouTube" class="footer__img" />
-          </a>
-        </div>
-      </div>
-    </footer>
+    <footer-comp />
   </div>
 </template>
 
@@ -71,6 +54,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Movie } from '@/services/api'
+import footerComp from '@/components/footerComp.vue'
 
 const route = useRoute()
 const movies = ref<Movie[]>([])
