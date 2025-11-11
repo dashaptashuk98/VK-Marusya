@@ -1,0 +1,273 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  margin-bottom: 120px;
+}
+
+.header {
+  padding: 24px 0;
+  margin: 0 0 32px 0;
+
+  .container {
+    max-width: 1440px;
+    padding: 0 80px;
+
+    @include vp-1023 {
+      padding: 0 20px;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+
+    @include vp-1023 {
+      gap: 12px;
+      justify-content: space-between;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    &-img {
+      height: 40px;
+
+      @include vp-1023 {
+        height: 32px;
+      }
+
+      @include vp-767 {
+        height: auto;
+      }
+    }
+  }
+
+  &__center {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 908px;
+    gap: 40px;
+    flex: 1;
+    min-width: 0;
+
+    @include vp-1023 {
+      justify-content: flex-end;
+      gap: 12px;
+      flex: none;
+      margin-left: auto;
+    }
+
+    &-main {
+      font-family: 'Play';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #ffffff;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      .text {
+        display: block;
+      }
+
+      .icon {
+        display: none;
+        width: 24px;
+        height: 24px;
+        @include vp-767 {
+          width: auto;
+          height: auto;
+        }
+      }
+
+      @include vp-1023 {
+        font-size: 19px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .header__center-main.active {
+    border-bottom: 1.5px solid rgba(220, 93, 252, 1);
+
+    @include vp-767 {
+      border-bottom: none;
+
+      .icon {
+        filter: brightness(0) saturate(100%) invert(58%) sepia(91%) saturate(2871%)
+          hue-rotate(261deg) brightness(101%) contrast(101%);
+      }
+    }
+  }
+
+  &__right {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    font-family: 'Play';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    color: #ffffff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    flex-shrink: 0;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+    }
+
+    .text {
+      display: block;
+    }
+
+    .icon {
+      display: none;
+    }
+
+    @include vp-1023 {
+      font-size: 19px;
+      line-height: 20px;
+    }
+  }
+}
+
+.form__search {
+  position: relative;
+  flex: 1;
+  max-width: 656px;
+
+  @include vp-1023 {
+    max-width: 40px;
+    flex: none;
+    margin: 0 8px;
+  }
+}
+
+.header__center-search {
+  padding: 12px 16px 12px 40px;
+  width: 100%;
+  background: #393b3c;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 16px;
+
+  &::placeholder {
+    color: #999;
+  }
+
+  &:focus {
+    outline: 2px solid #007bff;
+  }
+}
+
+.header__center-img {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+
+  @include vp-1023 {
+    position: static;
+    transform: none;
+    pointer-events: auto;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+
+    &:hover {
+      background: none;
+      height: auto;
+      width: auto;
+    }
+  }
+  @include vp-767 {
+    opacity: 0.8;
+  }
+}
+
+// Медиа-запрос для 767px - замена текста на иконки
+@include vp-767 {
+  .header__center-main {
+    .text {
+      display: none !important;
+    }
+
+    .icon {
+      display: block !important;
+    }
+    padding: 8px;
+  }
+
+  .header__right {
+    .text {
+      display: none !important;
+    }
+
+    .icon {
+      display: block !important;
+    }
+
+    // Стили для кнопки с иконкой
+    padding: 8px;
+    border-radius: 8px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  // Уменьшаем отступы между элементами
+  .header__wrapper {
+    gap: 8px !important;
+  }
+
+  .header__center {
+    gap: 4px !important;
+  }
+}
+
+// Дополнительные стили для скрытия пунктов меню на мобильных (если нужно)
+@include vp-1023 {
+  .header__center-main {
+    &:nth-child(1),
+    &:nth-child(2) {
+      // display: none; // раскомментируйте, если нужно скрыть
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  margin-top: auto;
+  color: white;
+  padding: 42px 0;
+}
+
+.footer__wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+  justify-content: flex-end;
+
+  @media (max-width: 768px) {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.footer__img {
+  @include vp-767 {
+    width: 24px;
+    height: 24px;
+  }
+}

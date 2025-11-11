@@ -1,0 +1,29 @@
+.container {
+  max-width: 1440px; // Единый максимальный размер
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 80px; // Единые паддинги для десктопа
+  box-sizing: border-box;
+
+  @media (max-width: 1023px) {
+    padding: 0 40px; // Для планшетов
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 20px; // Для мобильных
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 16px; // Для маленьких экранов
+  }
+}
+
+.title {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
+  margin-bottom: 32px;
+}
