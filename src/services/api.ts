@@ -77,13 +77,45 @@ export const apiService = {
       }
 
       const data = await response.json()
-      console.log('✅ Данные получены от API:', data)
-      console.log('Тип данных:', typeof data)
 
-      return data // возвращаем объект, а не массив
+      return data
     } catch (error) {
       console.error('❌ Ошибка при загрузке случайного фильма:', error)
       throw error
+    }
+  },
+
+  async searchMovies(query: string): Promise<Movie[]> {
+    try {
+      const cleanQuery = query.trim()
+
+      if (!cleanQuery) {
+        return []
+      }
+
+      const response = await fetch(
+        `https://cinemaguide.skillbox.cc/movie?title=${cleanQuery}&count=20`,
+      )
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const allMovies = await response.json()
+
+      const filteredByTitle = allMovies.filter((movie: Movie) => {
+        const searchLower = cleanQuery.toLowerCase()
+        const title = movie.title?.toLowerCase() || ''
+        // const originalTitle = movie.original_title?.toLowerCase() || ''
+
+        const titleMatch = title.startsWith(searchLower)
+        // const originalTitleMatch = originalTitle.includes(searchLower)
+        return titleMatch
+      })
+      return filteredByTitle.slice(0, 5)
+    } catch (error) {
+      console.error('Ошибка поиска фильмов:', error)
+      return []
     }
   },
 

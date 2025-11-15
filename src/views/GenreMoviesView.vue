@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <header class="header">
       <div class="container">
         <div class="header__wrapper">
@@ -112,6 +112,7 @@ onMounted(async () => {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/scss/main.scss';
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

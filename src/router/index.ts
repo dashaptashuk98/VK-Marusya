@@ -16,12 +16,12 @@ const routes = [
 
   // router/index.ts
   {
-    path: '/movie/:id', // добавьте этот маршрут
+    path: '/movie/:id',
     name: 'Movie',
     component: () => import('@/views/MovieView.vue'),
   },
   {
-    path: '/genre/:genre', // ДОБАВЛЯЕМ ЭТОТ МАРШРУТ
+    path: '/genre/:genre',
     name: 'genre-movies',
     component: () => import('@/views/GenreMoviesView.vue'),
   },
